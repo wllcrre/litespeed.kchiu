@@ -111,16 +111,35 @@ var _extends = Object.assign || function (e) {
     if (t.length) for (var n, s = 0; n = t[s]; s += 1) r(e, n); else r(e, t)
   }(m, b), m
 });
-!function (e, t) {
-  "use strict";
-  var n, a, d = function () {
-    n = new LazyLoad({elements_selector: "[data-lazyloaded]"}), a = function () {
-      n.update()
-    }, e.MutationObserver && new MutationObserver(a).observe(t.documentElement, {
-      childList: !0,
-      subtree: !0,
-      attributes: !0
-    })
-  };
-  e.addEventListener ? e.addEventListener("load", d, !1) : e.attachEvent("onload", d)
-}(window, document);
+
+
+var myLazyLoad = new LazyLoad({
+  elements_selector: "[data-lazyloaded]"
+});
+
+//Debug code for console log
+/*(function () {
+  function logElementEvent(eventName, element) {
+    console.log(Date.now(), eventName, element.getAttribute('data-src'));
+  }
+  ll = new LazyLoad({
+    elements_selector: '[data-lazyloaded]',
+    callback_enter: function (element) {
+      logElementEvent("ENTERED", element);
+    },
+    callback_load: function (element) {
+      logElementEvent("LOADED", element);
+    },
+    callback_set: function (element) {
+      logElementEvent("SET", element);
+    },
+    callback_error: function (element) {
+      logElementEvent("ERROR", element);
+      //element.src = "https://placeholdit.imgix.net/~text?txtsize=21&txt=Fallback%20image&w=220&h=280";
+    }
+  });
+}());*/
+
+
+
+
